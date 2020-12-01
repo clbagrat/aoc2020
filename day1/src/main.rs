@@ -1,7 +1,7 @@
 
 // i don't use itertools coz it would be too easy and i need to learn rust :D
 
-fn combinations(arr: &[u32]) -> Vec<(u32, u32, u32)> {
+fn combinations(arr: &[i32]) -> Vec<(i32, i32, i32)> {
     let mut v = Vec::new();
     for i in 0..arr.len() {
         for n in (i+1)..arr.len() {

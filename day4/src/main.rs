@@ -3,7 +3,6 @@ use std::collections::HashMap;
 use std::ops::RangeInclusive;
 use regex::Regex;
 
-
 fn to_hash_map(pass: &str) -> HashMap<&str, &str> {
     pass.split_whitespace().flat_map(|s| {
         let mut parts = s.split(":");
@@ -69,5 +68,4 @@ fn main() {
         .filter(|pass_data| is_value_in_list(pass_data, "ecl", &["amb", "blu", "brn", "gry", "grn", "hzl", "oth"]))
         .count()
     );
-
 }

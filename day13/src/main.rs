@@ -1,11 +1,5 @@
 
-use std::{fs, time, thread};
-
-
-
-fn is_ok(time:i64, bus:i64) -> bool {
-    time % bus == 0
-}
+use std::{fs};
 
 fn main() {
     let input = fs::read_to_string("input.txt").unwrap();
@@ -45,6 +39,5 @@ fn main() {
             }
         }
     }
-
     println!("part2 {}", time);
 }

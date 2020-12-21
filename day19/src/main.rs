@@ -11,19 +11,19 @@ fn unravel_regex(start:String, rule_map: &HashMap<&str, Vec<&str>>) -> String {
             "\"a\"" => {res.push(String::from("a"))},
             "\"b\"" => {res.push(String::from("b"))},
             "|" => {res.push(String::from("|"))},
-            //////
-            ////// uncomment for part2
-            //////
-            // "8" => {res.push(format!("({}+)", unravel_regex(String::from("42"), rule_map)))},
-            // "11" => {
-            //     let r1 = unravel_regex(String::from("42"), rule_map);
-            //     let r2 = unravel_regex(String::from("31"), rule_map);
-            //     let mut res_11 = vec![];
-            //     for i in 1..=5 {
-            //         res_11.push(format!("{x}{{{n}}}{y}{{{n}}}", x= r1, y=r2, n=i));
-            //     }
-            //     res.push(format!("({})", res_11.join("|")));
-            // },
+            ////
+            //// uncomment for part2
+            ////
+            "8" => {res.push(format!("({}+)", unravel_regex(String::from("42"), rule_map)))},
+            "11" => {
+                let r1 = unravel_regex(String::from("42"), rule_map);
+                let r2 = unravel_regex(String::from("31"), rule_map);
+                let mut res_11 = vec![];
+                for i in 1..=5 {
+                    res_11.push(format!("{x}{{{n}}}{y}{{{n}}}", x= r1, y=r2, n=i));
+                }
+                res.push(format!("({})", res_11.join("|")));
+            },
             _ => {res.push(unravel_regex(String::from(*r), rule_map))}
         }
     }
@@ -53,6 +53,7 @@ fn main() {
 
     let re = Regex::new(&regex_line).unwrap();
 
+    println!("{}", regex_line);
 
     println!("part {:#?}", messages.lines().filter(|l| re.is_match(l)).count());
 }
